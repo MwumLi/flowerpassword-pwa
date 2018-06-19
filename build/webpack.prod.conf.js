@@ -96,7 +96,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
-      }
+      }, path.resolve(__dirname, '../CNAME')
     ]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
