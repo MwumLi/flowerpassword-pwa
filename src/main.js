@@ -1,18 +1,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueClipboard from 'vue-clipboard2'
+
+Vue.use(VueClipboard)
 import {
   Vuetify,
   VApp,
-  VNavigationDrawer,
   VBottomNav,
   VTextField,
-  VFooter,
-  VList,
   VBtn,
   VIcon,
   VGrid,
-  VToolbar,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -20,15 +19,11 @@ import '../node_modules/vuetify/src/stylus/app.styl'
 Vue.use(Vuetify, {
   components: {
     VApp,
-    VNavigationDrawer,
     VBottomNav,
     VTextField,
-    VFooter,
-    VList,
     VBtn,
     VIcon,
     VGrid,
-    VToolbar,
     transitions
   }
 })

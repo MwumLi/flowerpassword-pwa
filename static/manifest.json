@@ -1,20 +1,36 @@
 {
-  "name": "fp",
-  "short_name": "fp",
+  "name": "Flower Password",
+  "short_name": "花密",
+  "description": "可记忆, 非存储的密码管理方案",
   "icons": [
     {
-      "src": "/static/img/icons/android-chrome-192x192.png",
+      "src": "/static/img/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/static/img/icons/android-chrome-512x512.png",
+      "src": "/static/img/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#303030",
+  "theme_color": "#0099CC"
 }

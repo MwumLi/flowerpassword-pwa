@@ -3,11 +3,11 @@
     <h2><span>1</span>输入</h2>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-text-field v-model="mpass" solo label="记忆密码" :type="seeMpass ? 'text' : 'password'" solo-inverted :append-icon="seeMpass ? 'visibility' : 'visibility_off'" :append-icon-cb="() => seeMpass = !seeMpass" @input="generateCode"></v-text-field>
+        <v-text-field v-model="mpass" solo label="记忆密码" :type="seeMpass ? 'text' : 'password'" solo-inverted :append-icon="seeMpass ? 'visibility' : 'visibility_off'" :append-icon-cb="() => seeMpass = !seeMpass"></v-text-field>
       </v-flex>
       <v-icon color="blue dark-2" large style="width: 100%;">add</v-icon>
       <v-flex xs12>
-        <v-text-field v-model="key" solo label="区分代号" type="text" solo-inverted @input="generateCode"></v-text-field>
+        <v-text-field v-model="key" solo label="区分代号" type="text" solo-inverted></v-text-field>
       </v-flex>
     </v-layout>
 
@@ -15,10 +15,9 @@
     <v-layout row wrap>
       <v-flex xs10>
         <v-text-field :value="gpassText" solo label="最终密码" :type="seeGpass ? 'text' : 'password'" solo-inverted :append-icon="seeGpass ? 'visibility' : 'visibility_off'" :append-icon-cb="() => seeGpass = !seeGpass" readonly :class="{'copy-result': !!copyResult}"></v-text-field>
-        <input type="text" :value="gpass" id="gpass">
       </v-flex>
       <v-flex xs2 class="copy">
-        <v-btn color="success" @mousedown="copyCode" @mouseup="onMouseUp">复制</v-btn>
+        <v-btn color="success" v-clipboard:copy="gpass" v-clipboard:success="onCliboardSuccess" v-clipboard:error="onCliboardError">复制</v-btn>
       </v-flex>
     </v-layout>
     <div class="notice">
@@ -40,32 +39,34 @@ export default {
       mpass: '',
       seeMpass: false,
       key: '',
-      gpass: '',
       seeGpass: false,
       copyResult: ''
     }
   },
   methods: {
-    generateCode () {
-      this.gpass = fpCode(this.mpass, this.key, 16) || ''
+    onCliboardSuccess () {
+      this.copyResult = '复制成功';
+      this.seeGpass = true;
+      setTimeout(() => {
+        this.copyResult = '';
+        this.seeGpass = false;
+      }, 1000)
     },
-    copyCode () {
-      let input = document.querySelector('#gpass')
-      input.select();
-      if (document.execCommand('copy')) {
-        document.execCommand('copy');
-        this.copyResult = '复制成功'
-        this.seeGpass = true
-      }
-    },
-    onMouseUp () {
-      this.seeGpass = false
-      this.copyResult = ''
+    onCliboardError () {
+      this.copyResult = '复制失败,可手动选中复制';
+      this.seeGpass = true;
+      setTimeout(() => {
+        this.copyResult = '';
+        this.seeGpass = false;
+      }, 1000)      
     }
   },
   computed: {
     gpassText () {
       return this.copyResult || this.gpass
+    },
+    gpass () {
+      return fpCode(this.mpass, this.key, 16) || ''
     }
   }
 }
@@ -111,11 +112,6 @@ export default {
     }
   }
 
-  #gpass {
-    position: absolute;
-    z-index: -1000;
-  }
-
   .copy-result {
     input {
       text-align:  center;
@@ -129,5 +125,13 @@ export default {
       list-style-position: inside;
     }
   }
+}
+
+button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>

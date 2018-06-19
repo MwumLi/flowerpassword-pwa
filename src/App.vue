@@ -12,7 +12,7 @@
       </router-link>
       <router-link to="/setting">
       <v-btn flat color="teal" value="setting">
-        <span>设置</span>
+        <span>关于</span>
         <v-icon>settings</v-icon>
       </v-btn>
       </router-link>

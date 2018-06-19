@@ -1,7 +1,7 @@
 {
-  "name": "fp-pwa",
+  "name": "flower-password-pwa",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "一种可记忆的, 非存储的密码管理方案",
   "author": "MwumLi <mwumli@hotmail.com>",
   "private": true,
   "scripts": {
@@ -14,6 +14,7 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3",
     "vue": "^2.5.2",
+    "vue-clipboard2": "^0.2.0",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.0"
   },
