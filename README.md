@@ -1,21 +1,23 @@
-# fp
+# flowerpassword-pwa-vue
 
-> A Vue.js project
+> [flowerpassword.com](https://flowerpassword.com/) 的 PWA 版本  
+
+“花密”提供一种简单的密码管理方法，你只需要记住一个“记忆密码”，为不同的账号设置不同的“区分代号”，然后通过花密计算就可以得到对应的不同的复杂密码。  
+
+![usage](https://file.kisexu.com/fp/img/index-intro.gif)  
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发环境(热加载)
 npm run dev
 
-# build for production with minification
+# 生产环境构建
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 部署到 gh-pages
+npm run deploy
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
